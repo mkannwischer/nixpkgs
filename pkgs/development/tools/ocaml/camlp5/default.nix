@@ -8,6 +8,7 @@
   makeWrapper,
   rresult,
   bos,
+  fmt,
   pcre2,
   re,
   camlp-streams,
@@ -41,23 +42,27 @@ stdenv.mkDerivation (
         }
         ."${finalAttrs.version}";
     };
-    nativeBuildInputs = [
-      ocaml
-      perl
-    ]
-    ++ lib.optionals recent [
-      makeWrapper
-      findlib
-    ];
+    nativeBuildInputs =
+      [
+        ocaml
+        perl
+      ]
+      ++ lib.optionals recent [
+        makeWrapper
+        findlib
+      ];
 
     buildInputs = lib.optionals recent [
       bos
-      pcre2
       re
       rresult
     ];
 
-    propagatedBuildInputs = lib.optional recent camlp-streams;
+    propagatedBuildInputs = lib.optionals recent [
+      camlp-streams
+      pcre2
+      fmt
+    ];
 
     strictDeps = true;
 
