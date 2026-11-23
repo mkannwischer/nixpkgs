@@ -7,13 +7,13 @@
 
 buildPythonPackage rec {
   pname = "pycryptodome-test-vectors";
-  version = "1.0.14";
+  version = "1.0.34";
   pyproject = true;
 
   src = fetchPypi {
-    inherit pname version;
-    hash = "sha256-1De0SjXcr8BibDVhv7G1BqG3x0RcxfudNuI3QWG8mjc=";
-    extension = "zip";
+    pname = "pycryptodome_test_vectors";
+    inherit version;
+    hash = "sha256-2CZ7jUs0FmvEwk7aPZrEO9lG+qjOO7IdSc431DhRPcA=";
   };
 
   nativeBuildInputs = [ setuptools ];
